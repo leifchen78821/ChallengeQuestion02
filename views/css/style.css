@@ -1,6 +1,9 @@
 *{
     margin: 0;
 }
+.ui-dialog { 
+    z-index: 1000 !important ;
+}
 #topColum {
     position: fixed ;
     width:100% ;
@@ -113,6 +116,7 @@
     margin: 5% auto ;
     border: 1px dotted #4F4F4F;
     width: 80%;
+    text-align: left ;
 }
 #createtable {
     text-align:left;
@@ -128,6 +132,16 @@
     border:none;
     background:none;
 }
+#btnView {
+    margin :auto 35%;
+    border:none;
+    background:none;
+}
+#btnJoin {
+    font-family:Microsoft JhengHei;
+    font-size:10px;
+}
+
 #btnLeft {
     float: left ;
     -webkit-transition: all .5s ease-out ;

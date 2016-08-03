@@ -18,7 +18,7 @@ class databasecalling_mod{
     private static $connection = null ;
     
     function __construct() {
-        $db = new PDO("mysql:host=localhost;dbname=monographic", "root", "");
+        $db = new PDO("mysql:host=localhost;dbname=EventRegistrationSystem", "root", "");
         $db->exec("SET CHARACTER SET utf8");
         self::$connection = $db ;
         $db = null ;

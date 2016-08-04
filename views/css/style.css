@@ -133,13 +133,14 @@
     background:none;
 }
 #btnView {
-    margin :auto 35%;
+    margin :auto 23%;
     border:none;
     background:none;
 }
 #btnJoin {
-    font-family:Microsoft JhengHei;
-    font-size:10px;
+    margin :auto 20%;
+    border:none;
+    background:none;
 }
 
 #btnLeft {

@@ -1,0 +1,61 @@
+[04-Aug-2016 03:02:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:02:04 UTC] PHP Stack trace:
+[04-Aug-2016 03:02:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:02:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:02:26 UTC] PHP Stack trace:
+[04-Aug-2016 03:02:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:03:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:03:00 UTC] PHP Stack trace:
+[04-Aug-2016 03:03:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:03:51 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:03:51 UTC] PHP Stack trace:
+[04-Aug-2016 03:03:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:04:22 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:04:22 UTC] PHP Stack trace:
+[04-Aug-2016 03:04:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:04:33 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 13
+[04-Aug-2016 03:04:33 UTC] PHP Stack trace:
+[04-Aug-2016 03:04:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:09:02 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 14
+[04-Aug-2016 03:09:02 UTC] PHP Stack trace:
+[04-Aug-2016 03:09:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:09:20 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 14
+[04-Aug-2016 03:09:20 UTC] PHP Stack trace:
+[04-Aug-2016 03:09:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:09:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 14
+[04-Aug-2016 03:09:26 UTC] PHP Stack trace:
+[04-Aug-2016 03:09:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:11:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 15
+[04-Aug-2016 03:11:44 UTC] PHP Stack trace:
+[04-Aug-2016 03:11:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:12:24 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 15
+[04-Aug-2016 03:12:24 UTC] PHP Stack trace:
+[04-Aug-2016 03:12:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:13:30 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 15
+[04-Aug-2016 03:13:30 UTC] PHP Stack trace:
+[04-Aug-2016 03:13:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 03:15:52 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php on line 15
+[04-Aug-2016 03:15:52 UTC] PHP Stack trace:
+[04-Aug-2016 03:15:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/checkMember_mod.php:0
+[04-Aug-2016 05:45:41 UTC] PHP Fatal error:  Class 'Controller' not found in /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php on line 3
+[04-Aug-2016 05:45:41 UTC] PHP Stack trace:
+[04-Aug-2016 05:45:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:46:21 UTC] PHP Warning:  require_once(core/Controller.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php on line 2
+[04-Aug-2016 05:46:21 UTC] PHP Stack trace:
+[04-Aug-2016 05:46:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:46:21 UTC] PHP Fatal error:  require_once(): Failed opening required 'core/Controller.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php on line 2
+[04-Aug-2016 05:46:21 UTC] PHP Stack trace:
+[04-Aug-2016 05:46:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:55:14 UTC] PHP Fatal error:  Class 'registration_con' not found in /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php on line 4
+[04-Aug-2016 05:55:14 UTC] PHP Stack trace:
+[04-Aug-2016 05:55:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:55:59 UTC] PHP Warning:  require_once(../_challengeQuestion02/views/registration.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/_challengeQuestion02/core/Controller.php on line 10
+[04-Aug-2016 05:55:59 UTC] PHP Stack trace:
+[04-Aug-2016 05:55:59 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:55:59 UTC] PHP   2. registration_con->__construct() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:15
+[04-Aug-2016 05:55:59 UTC] PHP   3. Controller->view() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:7
+[04-Aug-2016 05:55:59 UTC] PHP Fatal error:  require_once(): Failed opening required '../_challengeQuestion02/views/registration.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/_challengeQuestion02/core/Controller.php on line 10
+[04-Aug-2016 05:55:59 UTC] PHP Stack trace:
+[04-Aug-2016 05:55:59 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:0
+[04-Aug-2016 05:55:59 UTC] PHP   2. registration_con->__construct() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:15
+[04-Aug-2016 05:55:59 UTC] PHP   3. Controller->view() /home/ubuntu/workspace/_challengeQuestion02/controllers/registration_con.php:7

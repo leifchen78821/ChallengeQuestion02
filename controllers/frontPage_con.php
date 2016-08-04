@@ -3,14 +3,21 @@
 class frontPage_con extends Controller {
     
     function frontPage() {
+        
         if($_GET["Page"] == "list") {
             $list = $this->listPage() ;
             $data[1] = $list ;
         }
-        else {
-            $data[0] = $this->createPage() ;
+        elseif($_GET["Page"] == "create") {
+            $data = $this->createPage() ;
         }
+        else {
+            $data[1] = $this->singlePage($_GET["ID"]) ;
+            $data[0] = $this->singlePageRegister() ;
+        }
+        
         $this->view("frontPage",$data);
+        
     }
     
     function listPage() {
@@ -56,6 +63,7 @@ class frontPage_con extends Controller {
                 }
                 $createEvent = $this->model("frontPage_mod");
                 $createEvent->createEvent($txtEventName,$txtEventCount,$txtTakePeople,$startTime,$endTime,$txtEventAddNumber,$txtEventAddName,$i);
+                $data[0] = "createDone" ;
             }
             
             // setcookie("startTime" , $startTime , time()+7200 , "/");
@@ -66,6 +74,19 @@ class frontPage_con extends Controller {
             
             return $data ;
         }
+    }
+    
+    function singlePage($ID) {
+        $findEvent = $this->model("frontPage_mod");
+        $list = $findEvent->findEvent($ID);
+        return $list ;
+    }
+    
+    function singlePageRegister() {
+        if (isset($_POST["btnRegis"])) {
+            $data[0] = "eventNameEmpty" ;
+        }
+        return $data ;
     }
 }
 ?>

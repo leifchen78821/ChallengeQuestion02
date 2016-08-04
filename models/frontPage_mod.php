@@ -15,13 +15,15 @@ class frontPage_mod {
                         `joinCount`,
                         `takePeople`,
                         `startTime`,
-                        `endTime`)  
+                        `endTime`,
+                        `countDown`)  
                         VALUES ( 
                         :txtEventName , 
                         :txtEventCount ,
                         :txtTakePeople ,
                         :startTime , 
-                        :endTime )";
+                        :endTime ,
+                        :countDown )";
         
         $prepare = $pdolink->prepare($insertEvent);
         $prepare->bindParam(':txtEventName',$txtEventName);
@@ -29,8 +31,8 @@ class frontPage_mod {
         $prepare->bindParam(':txtTakePeople',$txtTakePeople);
         $prepare->bindParam(':startTime',$startTime);
         $prepare->bindParam(':endTime',$endTime);
+        $prepare->bindParam(':countDown',$txtEventCount);
         $prepare->execute();
-        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
         
         // ---------------------------------------------------------------
@@ -45,6 +47,21 @@ class frontPage_mod {
         // $prepare->bindParam(':txtEventName',$txtEventName);
         // $prepare->execute();
         // $ID = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        
+        // ---------------------------------------------------------------
+        // 建立網址
+        // ---------------------------------------------------------------
+        
+        $insertAddress ="UPDATE `createEventList` SET
+                        `connectAddress` = :connectAddress
+                        WHERE `cID` = :cID ";
+        
+        $connectAddress = "https://test20160620-leif-chen.c9users.io/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ID;
+        
+        $prepare = $pdolink->prepare($insertAddress);
+        $prepare->bindParam(':connectAddress',$connectAddress);
+        $prepare->bindParam(':cID',$ID);
+        $prepare->execute();
         
         // ---------------------------------------------------------------
         // 將該活動可報名人員資料輸入
@@ -84,6 +101,21 @@ class frontPage_mod {
         $eventList = "SELECT * FROM `createEventList` ORDER BY `cID` desc ;" ;
         
         $prepare = $pdolink->prepare($eventList);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        $pdo->closeConnection();
+        
+        return $result ;
+    }
+    function findEvent($ID) {
+        
+        $pdo = new databasecalling_mod ;
+        $pdolink = $pdo->startConnection() ;
+        
+        $eventList = "SELECT * FROM `createEventList` WHERE `cID` = :ID ;" ;
+        
+        $prepare = $pdolink->prepare($eventList);
+        $prepare->bindParam(':ID',$ID);
         $prepare->execute();
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
         $pdo->closeConnection();

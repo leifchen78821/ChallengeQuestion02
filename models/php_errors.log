@@ -1,0 +1,1 @@
+[04-Aug-2016 09:58:39 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE), expecting function (T_FUNCTION) in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 41

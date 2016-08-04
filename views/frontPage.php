@@ -25,6 +25,11 @@ elseif($data[0] == "timeSettingError") {
     echo "alert('結束時間不可早於開始時間!!')";
     echo "</script>";
 }
+elseif($data[0] == "createDone") {
+    echo "<script language='JavaScript'>";
+    echo "alert('建立成功，將跳轉至清單頁!!');location.href='../frontPage/frontPage?Page=list';";
+    echo "</script>";
+}
 
 ?>
 <!DOCTYPE html>
@@ -32,6 +37,7 @@ elseif($data[0] == "timeSettingError") {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="../views/css/style.css">
+        <!--<script type="text/javascript" src="../views/js/checkCanJoin.js"></script>-->
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
@@ -41,10 +47,16 @@ elseif($data[0] == "timeSettingError") {
         <title>活動報名系統</title>
         
         <script>
+            var num = 0 ;
+            setInterval(function() {
+                num += 1 ;
+                $("#countdown").html(num)
+            },1000); 
+            
             $( function() {
                 
                 // -------------------------------------------------------------
-                // 浮出視窗(報名)
+                // 浮出視窗(報名頁)
                 // -------------------------------------------------------------
                 
                 var dialog, form,
@@ -60,7 +72,7 @@ elseif($data[0] == "timeSettingError") {
                   allFields.removeClass( "ui-state-error" );
                   
                   if ( valid ) {
-                    location.href="test.php?employeenumber=" + employeenumber.val() + "?employeename=" + employeename.val() + "?takepeople=" + takepeople.val();
+                    location.href="../models/config/JQuery_registration_mod.php?ID="+ $("#ListID").val() +"&employeenumber=" + employeenumber.val() + "&employeename=" + employeename.val() + "&takepeople=" + takepeople.val();
                     dialog.dialog( "close" );
                   }
                   return valid;
@@ -68,19 +80,19 @@ elseif($data[0] == "timeSettingError") {
              
                 dialog = $( "#dialog-form" ).dialog({
                     autoOpen: false,
-                    height: 250,
+                    height: 300,
                     width: 350,
                     modal: true,
                     buttons: {
                     "報名": addUser,
                     "取消": function() {
-                      dialog.dialog( "close" );
+                        dialog.dialog( "close" );
                     }
-                  },
-                  close: function() {
+                },
+                close: function() {
                     form[ 0 ].reset();
                     allFields.removeClass( "ui-state-error" );
-                  }
+                }
                 });
              
                 form = dialog.find( "form" ).on( "submit", function( event ) {
@@ -94,7 +106,7 @@ elseif($data[0] == "timeSettingError") {
             
                 
                 // -------------------------------------------------------------
-                // 增加參加成員
+                // 增加參加成員(建立活動頁)
                 // -------------------------------------------------------------
                 
                 $('input[name=btnAdd]').click( function(){
@@ -116,8 +128,33 @@ elseif($data[0] == "timeSettingError") {
                 });
                 
                 // -------------------------------------------------------------
+                // 員工資格即時判斷(報名頁)
+                // -------------------------------------------------------------
                 
-            } );
+                $("#mas1").html("　");
+            	$("#employeenumber").on("change",function() {
+                	getData($("#employeenumber").val(),$("#ListID").val());
+            	});
+            	function getData(val1,val2) {
+	                // 將編號即時帶入php 並連結資料庫進行比對 再將比對結果回傳
+                    $.get("/_challengeQuestion02/models/config/AJAX_checkMember_mod.php?employeenumber=" + val1 + "&ID=" + val2, 
+                    function(data) {
+                        if(data == true) {
+                            $("#mas1").html("此員工可參加");
+                        }
+                        if(data == false) {
+                            $("#mas1").html("此員工不在報名清單內");
+                        }
+                    })
+            	}
+            });
+            
+            
+            
+            // -------------------------------------------------------------
+            // 報名剩餘人數(報名頁)
+            // -------------------------------------------------------------
+            
         </script>
     </head>
     <body>
@@ -149,6 +186,17 @@ elseif($data[0] == "timeSettingError") {
                 <div id = "lists" style = "background-size: 100% auto ; background-image: url(../views/img/listbackground.png) ; ">
                     <div style = "width: 100% ;">
                         <div style = "width: 80% ; float:left ; font-size:18px ; font-weight:bold;">
+                            
+                            <?php date_default_timezone_set('Asia/Taipei'); ?>
+                            <?php $time = date("Y-m-d H:i:s") ; ?>
+                            <?php if($eventList["startTime"] > $time): ?>
+                            <?php  $i = "notyet" ; ?>
+                            <?php elseif($eventList["endTime"] < $time): ?>
+                            <?php  $i = "over" ; ?>
+                            <?php else: ?>
+                            <?php $i = "start" ; ?>
+                            <?php endif ?>
+                            
                             活動名稱 : <?php echo $eventList["eventName"] ; ?><br>
                             可報名總人數 : <?php echo $eventList["joinCount"] ;?><br>
                             可否攜伴 : <?php if($eventList["takePeople"] == 0): ?>
@@ -158,38 +206,47 @@ elseif($data[0] == "timeSettingError") {
                                        <?php endif ?><br>
                             報名時間 : <?php echo $eventList["startTime"] ; ?><br>
                             截止時間 : <?php echo $eventList["endTime"] ; ?><br>
-                            連結網址 : <br>
+                            連結網址 : 
+                                    <?php if($i == "start"): ?>
+                                    <input type="text" style = "width:70%" value = "<?php echo $eventList["connectAddress"] ; ?>"><br>
+                                    <?php else: ?>
+                                    連結已失效
+                                    <?php endif ?>
                         </div>
                         <div style = "width: 20% ; float:left; text-align:center ;">
                             <div style = " border: 1px dotted #4F4F4F ; margin : 8% 8% ; padding : 0 0 15% 0">
                                 <span style = "font-size:15px">剩餘人數</span><br>
+                                <?php if($i == "start"): ?>
                                 <span style = "font-weight:bold;"><?php echo $eventList["joinCount"] ; ?></span>
+                                <?php else: ?>
+                                <span style = "font-weight:bold;">--</span>
+                                <?php endif ?>
+                                
                             </div>
-                            <button id = "btnJoin" name = "btnJoin" type = "button">報名(已截止)</button>
+                            <!--<button id = "btnJoin" name = "btnJoin" type = "button">報名(已截止)</button>-->
+                            
+                            <?php if($i == "notyet"): ?>
+                            <span style = "font-size: 20px ; color: blue ;"><?php echo "尚未開放" ; ?></sapn>
+                            <?php elseif($i == "over"): ?>
+                            <span style = "font-size: 20px ; color: black ;"><?php echo "報名截止" ; ?></sapn>
+                            <?php else: ?>
+                            <span style = "font-size: 20px ; color: red ;"><?php echo "開放報名!!" ; ?></sapn>
+                            <?php endif ?>
+                            
                         </div>
                     </div>
                     <div style = "width: 100% ;">
-                        <button id = "btnView" name = "btnView" type = "button"><img src="../views/img/viewlist.png" height = "40"></button>
+                        <?php if($i == "notyet"): ?>
+                        <img src="../views/img/Notopen.png" height = "40" style = "margin :auto 28%;" >
+                        <?php elseif($i == "over"): ?>
+                        <img src="../views/img/applicationDeadline.png" height = "40" style = "margin :auto 20%;" >
+                        <?php else: ?>
+                        <a href = "<?php echo $eventList["connectAddress"] ; ?>" id = "btnView" name = "btnView"><img src="../views/img/viewlist.png" height = "40"></a>
+                        <?php endif ?>
                     </div>
                 </div>
                 <?php endforeach ?>
                 
-            </div>
-            <!--浮出視窗(報名)-->
-            <div id="dialog-form" title="活動名稱">
-                <p class="validateTips">輸入報名資料</p>
-                <form>
-                    <fieldset>
-                        <label for="employeenumber">員工編號</label>
-                        <input type="text" name="employeenumber" id="employeenumber" class="text ui-widget-content ui-corner-all"><br>
-                        <label for="employeename">員工姓名</label>
-                        <input type="text" name="employeename" id="employeename" class="text ui-widget-content ui-corner-all"><br>
-                        <label for="takepeople">攜伴數量</label>
-                        <input type="text" name="takepeople" id="takepeople" value = "0" class="text ui-widget-content ui-corner-all"><br>
-                        <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    </fieldset>
-                </form>
             </div>
             
             <?php elseif($_GET["Page"] == "create") :?>
@@ -256,7 +313,61 @@ elseif($data[0] == "timeSettingError") {
                 </form>
             </div>
             <?php elseif($_GET["Page"] == "single") :?>
-            
+            <?php foreach($data[1] as $eventList): ?>
+            <div id = "eventlists">
+                <!--傳ID用-->
+                <div style="display: none">
+                    <input type="text" name="ListID" id="ListID" value = "<?php echo $_GET["ID"] ; ?>">
+                </div>
+                
+                <div id = "lists" style = "background-size: 100% auto ; background-image: url(../views/img/listbackground.png) ; ">
+                    <div style = "width: 100% ;">
+                        <div style = "width: 80% ; float:left ; font-size:18px ; font-weight:bold;">
+                            活動名稱 : <?php echo $eventList["eventName"] ; ?><br>
+                            可報名總人數 : <?php echo $eventList["joinCount"] ;?><br>
+                            可否攜伴 : <?php if($eventList["takePeople"] == 0): ?>
+                                       <?php echo "否" ; ?>
+                                       <?php else: ?>
+                                       <?php echo "是" ; ?>
+                                       <?php endif ?><br>
+                            報名時間 : <?php echo $eventList["startTime"] ; ?><br>
+                            截止時間 : <?php echo $eventList["endTime"] ; ?><br>
+                        </div>
+                        <div style = "width: 20% ; float:left; text-align:center ;">
+                            <div style = " border: 1px dotted #4F4F4F ; margin : 8% 8% ; padding : 0 0 15% 0">
+                                <span style = "font-size:15px">剩餘人數</span><br>
+                                <div id = "countdown"><span style = "font-weight:bold;"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style = "width: 100% ;">
+                        <button id = "btnJoin" name = "btnJoin" type = "button"><img src="../views/img/Openregistration.png" height = "40"></button>
+                    </div>
+                </div>
+                
+            </div>
+            <!--浮出視窗(報名)-->
+            <div id="dialog-form" title="活動名稱 : <?php echo $eventList["eventName"] ; ?>">
+                <p class="validateTips" style = "font-size: 25px;font-weight:bold;font-family:Microsoft JhengHei;">輸入報名資料</p><br>
+                <form>
+                    <fieldset>
+                        <label for="employeenumber">員工編號</label>
+                        <input type="text" name="employeenumber" id="employeenumber" class="text ui-widget-content ui-corner-all"><br>
+                        <label for="employeename">員工姓名</label>
+                        <input type="text" name="employeename" id="employeename" class="text ui-widget-content ui-corner-all"><br>
+                        <label for="takepeople">攜伴數量</label>
+                        <?php if($eventList["takePeople"] == 0): ?>
+                        <?php echo " - 不可攜伴" ; ?>
+                        <?php else: ?>
+                        <input type="text" name="takepeople" id="takepeople" value = "0" class="text ui-widget-content ui-corner-all">
+                        <?php endif ?><br>
+                        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                        <input type="submit" id = "btnRegis" tabindex="-1" style="position:absolute; top:-1000px">
+                    </fieldset>
+                    <div name="mas1" id="mas1" style = "font-size : 18px ; color : red ; "></div>
+                </form>
+            </div>
+            <?php endforeach ?>
             <?php endif?>
         </div>
     </body>

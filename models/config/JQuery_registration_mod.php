@@ -134,8 +134,18 @@ class JQuery_registration_mod {
             
         }
         else {
+            
+            $sql = "SELECT `randomPassword` FROM `createEventList` WHERE `cID` = :id FOR UPDATE" ;
+                        $prepare = $db->prepare($sql);
+                        $prepare->bindParam(':id', $_GET["ID"]);
+                        $prepare->execute();
+                        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+                        foreach($result as $membernum) {
+                            $ref = $membernum["randomPassword"] ;
+                        }
+            
             echo "<script language='JavaScript'>";
-            echo "alert('您所輸入的員工資料有誤，請重新輸入');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $_GET["ID"] . "';";
+            echo "alert('您所輸入的員工資料有誤，請重新輸入');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $sql . "';";
             echo "</script>";
         }
     }

@@ -1,1 +1,54 @@
 [04-Aug-2016 09:58:39 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE), expecting function (T_FUNCTION) in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 41
+[05-Aug-2016 01:18:20 UTC] PHP Fatal error:  Cannot use try without catch or finally in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 65
+[05-Aug-2016 01:23:16 UTC] PHP Fatal error:  Call to a member function beginTransaction() on a non-object in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 29
+[05-Aug-2016 01:23:16 UTC] PHP Stack trace:
+[05-Aug-2016 01:23:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:23:16 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:73
+[05-Aug-2016 01:23:29 UTC] PHP Fatal error:  Call to a member function beginTransaction() on a non-object in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 29
+[05-Aug-2016 01:23:29 UTC] PHP Stack trace:
+[05-Aug-2016 01:23:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:23:29 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:73
+[05-Aug-2016 01:23:42 UTC] PHP Fatal error:  Call to a member function beginTransaction() on a non-object in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 29
+[05-Aug-2016 01:23:42 UTC] PHP Stack trace:
+[05-Aug-2016 01:23:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:23:42 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:73
+[05-Aug-2016 01:28:42 UTC] PHP Warning:  Illegal string offset 'countDown' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 50
+[05-Aug-2016 01:28:42 UTC] PHP Stack trace:
+[05-Aug-2016 01:28:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:28:42 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:90
+[05-Aug-2016 01:32:40 UTC] PHP Warning:  Illegal string offset 'countDown' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 50
+[05-Aug-2016 01:32:40 UTC] PHP Stack trace:
+[05-Aug-2016 01:32:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:32:40 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:90
+[05-Aug-2016 01:33:35 UTC] PHP Warning:  Illegal string offset 'countDown' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 50
+[05-Aug-2016 01:33:35 UTC] PHP Stack trace:
+[05-Aug-2016 01:33:35 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 01:33:35 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:90
+[05-Aug-2016 02:44:36 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:82
+Stack trace:
+#0 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(82): PDO->rollBack()
+#1 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(95): JQuery_registration_mod->__construct()
+#2 {main}
+  thrown in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 82
+[05-Aug-2016 02:46:47 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:82
+Stack trace:
+#0 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(82): PDO->rollBack()
+#1 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(95): JQuery_registration_mod->__construct()
+#2 {main}
+  thrown in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 82
+[05-Aug-2016 02:48:05 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:82
+Stack trace:
+#0 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(82): PDO->rollBack()
+#1 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(95): JQuery_registration_mod->__construct()
+#2 {main}
+  thrown in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 82
+[05-Aug-2016 03:15:30 UTC] PHP Fatal error:  Cannot pass parameter 2 by reference in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 93
+[05-Aug-2016 03:15:30 UTC] PHP Stack trace:
+[05-Aug-2016 03:15:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:0
+[05-Aug-2016 03:15:30 UTC] PHP   2. JQuery_registration_mod->__construct() /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:132
+[05-Aug-2016 04:15:48 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php:121
+Stack trace:
+#0 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(121): PDO->rollBack()
+#1 /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php(134): JQuery_registration_mod->__construct()
+#2 {main}
+  thrown in /home/ubuntu/workspace/_challengeQuestion02/models/config/JQuery_registration_mod.php on line 121

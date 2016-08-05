@@ -91,6 +91,22 @@ class frontPage_mod {
             }
         }
         
+        // ---------------------------------------------------------------
+        // 建立顯示AJAX用的資料表
+        // ---------------------------------------------------------------
+        
+        $insertEvent ="INSERT INTO `showCountDown` (
+                        `eventID`,
+                        `countDown`)  
+                        VALUES ( 
+                        :ID ,
+                        :countDown )";
+        
+        $prepare = $pdolink->prepare($insertEvent);
+        $prepare->bindParam(':ID',$ID);
+        $prepare->bindParam(':countDown',$txtEventCount);
+        $prepare->execute();
+        
         $pdo->closeConnection();
     }
     function showList() {
@@ -122,6 +138,22 @@ class frontPage_mod {
         
         return $result ;
     }
+        function showJoinMember($ID) {
+        
+        $pdo = new databasecalling_mod ;
+        $pdolink = $pdo->startConnection() ;
+        
+        $eventList = "SELECT * FROM `JoinEvent` WHERE `eventID` = :ID ;" ;
+        
+        $prepare = $pdolink->prepare($eventList);
+        $prepare->bindParam(':ID',$ID);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        $pdo->closeConnection();
+        
+        return $result ;
+    }
+    
 }
 
 ?>

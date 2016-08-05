@@ -5,15 +5,19 @@ class frontPage_con extends Controller {
     function frontPage() {
         
         if($_GET["Page"] == "list") {
+            
             $list = $this->listPage() ;
             $data[1] = $list ;
         }
         elseif($_GET["Page"] == "create") {
+            
             $data = $this->createPage() ;
         }
         else {
+            
             $data[1] = $this->singlePage($_GET["ID"]) ;
             $data[0] = $this->singlePageRegister() ;
+            $data[2] = $this->singlePageJoinMember($_GET["ID"]) ;
         }
         
         $this->view("frontPage",$data);
@@ -87,6 +91,11 @@ class frontPage_con extends Controller {
             $data[0] = "eventNameEmpty" ;
         }
         return $data ;
+    }
+    function singlePageJoinMember($ID) {
+        $showJoinMember = $this->model("frontPage_mod");
+        $list = $showJoinMember->showJoinMember($ID);
+        return $list ;
     }
 }
 ?>

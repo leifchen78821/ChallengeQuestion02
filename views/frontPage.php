@@ -47,10 +47,39 @@ elseif($data[0] == "createDone") {
         <title>活動報名系統</title>
         
         <script>
-            var num = 0 ;
+            
+            // -------------------------------------------------------------
+            // 即時顯示(報名頁)
+            // -------------------------------------------------------------
+            
+            setTimeout(function() {
+                
+                getData($("#ListID").val());
+                
+                function getData(val) {
+                    $.get("/_challengeQuestion02/models/config/AJAX_showCountDown_mod.php?ID=" + val , 
+                    function(data) {
+                        
+                        $("#countdown").html(data)
+                        
+                    })
+                }
+                
+            },1)
+            
             setInterval(function() {
-                num += 1 ;
-                $("#countdown").html(num)
+                
+                getData($("#ListID").val());
+                
+                function getData(val) {
+                    $.get("/_challengeQuestion02/models/config/AJAX_showCountDown_mod.php?ID=" + val , 
+                    function(data) {
+                        
+                        $("#countdown").html(data)
+                        
+                    })
+            	}
+                
             },1000); 
             
             $( function() {
@@ -149,12 +178,6 @@ elseif($data[0] == "createDone") {
             	}
             });
             
-            
-            
-            // -------------------------------------------------------------
-            // 報名剩餘人數(報名頁)
-            // -------------------------------------------------------------
-            
         </script>
     </head>
     <body>
@@ -210,14 +233,14 @@ elseif($data[0] == "createDone") {
                                     <?php if($i == "start"): ?>
                                     <input type="text" style = "width:70%" value = "<?php echo $eventList["connectAddress"] ; ?>"><br>
                                     <?php else: ?>
-                                    連結已失效
+                                    連結無效
                                     <?php endif ?>
                         </div>
                         <div style = "width: 20% ; float:left; text-align:center ;">
                             <div style = " border: 1px dotted #4F4F4F ; margin : 8% 8% ; padding : 0 0 15% 0">
                                 <span style = "font-size:15px">剩餘人數</span><br>
                                 <?php if($i == "start"): ?>
-                                <span style = "font-weight:bold;"><?php echo $eventList["joinCount"] ; ?></span>
+                                <span style = "font-weight:bold;"><?php echo $eventList["countDown"] ; ?></span>
                                 <?php else: ?>
                                 <span style = "font-weight:bold;">--</span>
                                 <?php endif ?>
@@ -343,6 +366,20 @@ elseif($data[0] == "createDone") {
                     <div style = "width: 100% ;">
                         <button id = "btnJoin" name = "btnJoin" type = "button"><img src="../views/img/Openregistration.png" height = "40"></button>
                     </div>
+                </div>
+                <div style = "width:80% ; height : 500px ; margin:auto ; text-align: center ; border: 1px dotted #4F4F4F ; font-family:Microsoft JhengHei ; font-size:20px;">
+                    <br><div style = "width:100% ;"><span>已報名清單</span></div><br>
+                    <div style = "width:30% ; margin:auto 0 auto 8% ; text-align: center ; border: 1px solid #4F4F4F; float:left ">員工編號</div>
+                    <div style = "width:30% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left ">員工姓名</div>
+                    <div style = "width:20% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left ">攜伴數量</div><br>
+                    <?php foreach($data[2] as $JoinMember): ?>
+                    <div class="table">
+                        <div style = "width:30% ; margin:auto 0 auto 8% ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["joinMemberNumber"] ; ?></div>
+                        <div style = "width:30% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["joinMemberName"] ; ?></div>
+                        <div style = "width:20% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["takePeopleNumber"] ; ?></div><br>
+                    </div>
+                    <?php endforeach ?>
+                    
                 </div>
                 
             </div>

@@ -145,7 +145,7 @@ class JQuery_registration_mod {
                         }
             
             echo "<script language='JavaScript'>";
-            echo "alert('您所輸入的員工資料有誤，請重新輸入');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $sql . "';";
+            echo "alert('您所輸入的員工資料有誤，請重新輸入');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ref . "';";
             echo "</script>";
         }
     }

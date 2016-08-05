@@ -39,10 +39,16 @@ elseif($data[0] == "createDone") {
         <link rel="stylesheet" type="text/css" href="../views/css/style.css">
         <!--<script type="text/javascript" src="../views/js/checkCanJoin.js"></script>-->
         
+        <!--JQuery UI-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+        
+        <!--datetimepicker-->
+        <!--<link rel="stylesheet" type="text/css" href="../views/js/datetimepicker-master/jquery.datetimepicker.css"/ >-->
+        <!--<script src="../views/js/datetimepicker-master/jquery.js"></script>-->
+        <!--<script src="../views/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>-->
         
         <title>活動報名系統</title>
         
@@ -83,6 +89,22 @@ elseif($data[0] == "createDone") {
             },1000); 
             
             $( function() {
+                
+                // // -------------------------------------------------------------
+                // // datetimepicker
+                // // -------------------------------------------------------------
+                
+                // var date_now = new Date();
+                // var year = date_now.getFullYear();
+                // var month = date_now.getMonth()+1;
+                // var day = date_now.getDay();
+                // var hour = date_now.getHours();
+                // var min = date_now.getMinutes();
+                
+                // jQuery('#startTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
+                // // this.jQuery('#startTime').datetimepicker().Value = DateTime.Today;
+                // jQuery('#endTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
+                // // this.endTime.Value = DateTime.Today;
                 
                 // -------------------------------------------------------------
                 // 浮出視窗(報名頁)
@@ -310,9 +332,13 @@ elseif($data[0] == "createDone") {
                             <!--<label for="from">開始日期 : </label>-->
                             開始日期 : 
                             <input type="datetime-local" id="startTime" name="startTime"><br><br>
+                            <!--<input id = "startTime" name = "startTime" type = "text"><br><br>-->
+                            
                             <!--<label for="to">截止日期 : </label>-->
                             截止日期 : 
                             <input type="datetime-local" id="endTime" name="endTime"><br><br>
+                            <!--<input id = "endTime" name = "endTime" type = "text" ><br><br>-->
+                            
                             可報名成員 :  <input type="button" class="but" name="btnAdd" id="btnAdd" value="新增" style="width:100px;" /><br><br>
                             <div id = "addMember">
                                 員工編號 : 

@@ -96,19 +96,29 @@ class JQuery_registration_mod {
                         $prepare->execute();
                         
                         // ---------------------------------------------------------------
+                        
+                        $sql = "SELECT `randomPassword` FROM `createEventList` WHERE `cID` = :id FOR UPDATE" ;
+                        $prepare = $db->prepare($sql);
+                        $prepare->bindParam(':id', $_GET["ID"]);
+                        $prepare->execute();
+                        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+                        foreach($result as $membernum) {
+                            $ref = $membernum["randomPassword"] ;
+                        }
+                        
                         if($updateCount > 0){
                             echo "<script language='JavaScript'>";
-                            echo "alert('報名成功');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $_GET["ID"] . "';";
+                            echo "alert('報名成功');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ref . "';";
                             echo "</script>";
                         }else{
                             echo "<script language='JavaScript'>";
-                            echo "alert('報名失敗');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $_GET["ID"] . "';";
+                            echo "alert('報名失敗');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ref . "';";
                             echo "</script>";
                         }
                     }
                     else {
                         echo "<script language='JavaScript'>";
-                        echo "alert('您所報名的總人數大於剩餘人數');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $_GET["ID"] . "';";
+                        echo "alert('您所報名的總人數大於剩餘人數');location.href='/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ref . "';";
                         echo "</script>";
                         $db->rollback();
                         // throw new Exception("購買數量大於庫存數量");

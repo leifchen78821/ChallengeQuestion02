@@ -49,18 +49,28 @@ class frontPage_mod {
         // $ID = $prepare->fetchAll(PDO::FETCH_ASSOC);
         
         // ---------------------------------------------------------------
+        // 亂碼產生器
+        // ---------------------------------------------------------------
+        
+        $str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $password = substr(str_shuffle($str), 0, 30);
+        
+        // ---------------------------------------------------------------
         // 建立網址
         // ---------------------------------------------------------------
         
         $insertAddress ="UPDATE `createEventList` SET
-                        `connectAddress` = :connectAddress
+                        `connectAddress` = :connectAddress ,
+                        `randomPassword` = :randomPassword
                         WHERE `cID` = :cID ";
         
-        $connectAddress = "https://test20160620-leif-chen.c9users.io/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $ID;
+        $connectAddress = "https://test20160620-leif-chen.c9users.io/_challengeQuestion02/frontPage/frontPage?Page=single&ID=" . $password;
         
         $prepare = $pdolink->prepare($insertAddress);
         $prepare->bindParam(':connectAddress',$connectAddress);
+        $prepare->bindParam(':randomPassword',$password);
         $prepare->bindParam(':cID',$ID);
+        
         $prepare->execute();
         
         // ---------------------------------------------------------------
@@ -123,12 +133,13 @@ class frontPage_mod {
         
         return $result ;
     }
+    
     function findEvent($ID) {
         
         $pdo = new databasecalling_mod ;
         $pdolink = $pdo->startConnection() ;
         
-        $eventList = "SELECT * FROM `createEventList` WHERE `cID` = :ID ;" ;
+        $eventList = "SELECT * FROM `createEventList` WHERE `randomPassword` = :ID ;" ;
         
         $prepare = $pdolink->prepare($eventList);
         $prepare->bindParam(':ID',$ID);
@@ -138,15 +149,26 @@ class frontPage_mod {
         
         return $result ;
     }
-        function showJoinMember($ID) {
+    
+    function showJoinMember($ID) {
         
         $pdo = new databasecalling_mod ;
         $pdolink = $pdo->startConnection() ;
         
+        $eventList = "SELECT `cID` FROM `createEventList` WHERE `randomPassword` = :ID ;" ;
+        $prepare = $pdolink->prepare($eventList);
+        $prepare->bindParam(':ID',$ID);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($result as $memberID) {
+            $ref = $memberID["cID"] ;
+        }
+        
         $eventList = "SELECT * FROM `JoinEvent` WHERE `eventID` = :ID ;" ;
         
         $prepare = $pdolink->prepare($eventList);
-        $prepare->bindParam(':ID',$ID);
+        $prepare->bindParam(':ID',$ref);
         $prepare->execute();
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
         $pdo->closeConnection();

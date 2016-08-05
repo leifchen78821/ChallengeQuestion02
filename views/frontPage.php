@@ -364,7 +364,7 @@ elseif($data[0] == "createDone") {
             <div id = "eventlists">
                 <!--傳ID用-->
                 <div style="display: none">
-                    <input type="text" name="ListID" id="ListID" value = "<?php echo $_GET["ID"] ; ?>">
+                    <input type="text" name="ListID" id="ListID" value = "<?php echo $eventList["cID"] ; ?>">
                 </div>
                 
                 <div id = "lists" style = "background-size: 100% auto ; background-image: url(../views/img/listbackground.png) ; ">

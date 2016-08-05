@@ -46,9 +46,9 @@ elseif($data[0] == "createDone") {
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         
         <!--datetimepicker-->
-        <!--<link rel="stylesheet" type="text/css" href="../views/js/datetimepicker-master/jquery.datetimepicker.css"/ >-->
+        <link rel="stylesheet" type="text/css" href="../views/js/datetimepicker-master/jquery.datetimepicker.css"/ >
         <!--<script src="../views/js/datetimepicker-master/jquery.js"></script>-->
-        <!--<script src="../views/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>-->
+        <script src="../views/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
         
         <title>活動報名系統</title>
         
@@ -90,21 +90,19 @@ elseif($data[0] == "createDone") {
             
             $( function() {
                 
-                // // -------------------------------------------------------------
-                // // datetimepicker
-                // // -------------------------------------------------------------
+                // -------------------------------------------------------------
+                // datetimepicker
+                // -------------------------------------------------------------
                 
-                // var date_now = new Date();
-                // var year = date_now.getFullYear();
-                // var month = date_now.getMonth()+1;
-                // var day = date_now.getDay();
-                // var hour = date_now.getHours();
-                // var min = date_now.getMinutes();
+                var date_now = new Date();
+                var year = date_now.getFullYear();
+                var month = date_now.getMonth()+1;
+                var day = date_now.getDay();
+                var hour = date_now.getHours();
+                var min = date_now.getMinutes();
                 
-                // jQuery('#startTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
-                // // this.jQuery('#startTime').datetimepicker().Value = DateTime.Today;
-                // jQuery('#endTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
-                // // this.endTime.Value = DateTime.Today;
+                jQuery('#startTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
+                jQuery('#endTime').datetimepicker().val( year + "/" + (month<10 ? '0' : '') + month + "/" + (day<10 ? '0' : '') + day + " " + (hour<10 ? '0' : '') + hour + ":" + (min<10 ? '0' : '') + min );
                 
                 // -------------------------------------------------------------
                 // 浮出視窗(報名頁)
@@ -331,13 +329,13 @@ elseif($data[0] == "createDone") {
                             
                             <!--<label for="from">開始日期 : </label>-->
                             開始日期 : 
-                            <input type="datetime-local" id="startTime" name="startTime"><br><br>
-                            <!--<input id = "startTime" name = "startTime" type = "text"><br><br>-->
+                            <!--<input type="datetime-local" id="startTime" name="startTime"><br><br>-->
+                            <input id = "startTime" name = "startTime" type = "text"><br><br>
                             
                             <!--<label for="to">截止日期 : </label>-->
                             截止日期 : 
-                            <input type="datetime-local" id="endTime" name="endTime"><br><br>
-                            <!--<input id = "endTime" name = "endTime" type = "text" ><br><br>-->
+                            <!--<input type="datetime-local" id="endTime" name="endTime"><br><br>-->
+                            <input id = "endTime" name = "endTime" type = "text" ><br><br>
                             
                             可報名成員 :  <input type="button" class="but" name="btnAdd" id="btnAdd" value="新增" style="width:100px;" /><br><br>
                             <div id = "addMember">
@@ -393,18 +391,17 @@ elseif($data[0] == "createDone") {
                         <button id = "btnJoin" name = "btnJoin" type = "button"><img src="../views/img/Openregistration.png" height = "40"></button>
                     </div>
                 </div>
-                <div style = "width:80% ; height : 500px ; margin:auto ; text-align: center ; border: 1px dotted #4F4F4F ; font-family:Microsoft JhengHei ; font-size:20px;">
+                <div class="table" style = "width:80% ; height : auto ; margin:auto ; text-align: center ; border: 1px dotted #4F4F4F ; font-family:Microsoft JhengHei ; font-size:20px;">
                     <br><div style = "width:100% ;"><span>已報名清單</span></div><br>
                     <div style = "width:30% ; margin:auto 0 auto 8% ; text-align: center ; border: 1px solid #4F4F4F; float:left ">員工編號</div>
                     <div style = "width:30% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left ">員工姓名</div>
                     <div style = "width:20% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left ">攜伴數量</div><br>
                     <?php foreach($data[2] as $JoinMember): ?>
-                    <div class="table">
                         <div style = "width:30% ; margin:auto 0 auto 8% ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["joinMemberNumber"] ; ?></div>
                         <div style = "width:30% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["joinMemberName"] ; ?></div>
                         <div style = "width:20% ; margin:auto ; text-align: center ; border: 1px solid #4F4F4F; float:left "><?php echo $JoinMember["takePeopleNumber"] ; ?></div><br>
-                    </div>
                     <?php endforeach ?>
+                    <br><br><br><br>
                     
                 </div>
                 
